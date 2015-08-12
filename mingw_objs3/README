@@ -1,0 +1,3 @@
+to compile:
+
+gcc -c -g a.c
