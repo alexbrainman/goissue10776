@@ -176,7 +176,7 @@ func printSymbols(f *os.File, fh *pe.FileHeader) error {
 	fmt.Printf("idx  type section     value  class   aux name\n")
 	fmt.Printf("--- ----- ------- --------- ------ ----- ----------------\n")
 	aux := uint8(0)
-	auxstart := aux
+	auxstart := 0
 	for i, s := range syms {
 		var name string
 		if s.Name[0] == 0 && s.Name[1] == 0 && s.Name[2] == 0 && s.Name[3] == 0 {
@@ -200,7 +200,7 @@ func printSymbols(f *os.File, fh *pe.FileHeader) error {
 			}
 		} else {
 			aux = s.NumberOfAuxSymbols
-			auxstart = uint8(i)
+			auxstart = i
 			fmt.Printf("%3d %5d %7d %9x %6d %5d %v %s\n",
 				i, s.Type, s.SectionNumber, s.Value, s.StorageClass,
 				s.NumberOfAuxSymbols, hex.EncodeToString(s.Name[:]), name)
