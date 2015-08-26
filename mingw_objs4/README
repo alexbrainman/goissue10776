@@ -1,0 +1,5 @@
+to compile:
+
+gcc -g -c line1.c
+gcc -g -c line2.c
+gcc -g -o a.exe line*.c
